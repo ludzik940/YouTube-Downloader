@@ -3,8 +3,13 @@ from pytube import YouTube
 from tkinter import *
 
 root= tk.Tk()
-
 root.title('YouTube Downloader')
+
+photo = PhotoImage(file="youtube.png")
+varun_label = Label(image=photo)
+varun_label.pack()
+
+
 canvas1 = tk.Canvas(root, width = 500, height = 280,  relief = 'raised')
 canvas1.pack()
 
@@ -25,6 +30,7 @@ def download_audio():
     link = entry1.get()
     video = YouTube(link)
     video.streams.get_audio_only().download('Downloads/Audio', video.title + '.mp3')
+    #root.video =  filedialog.asksaveasfilename(initialdir = "/",title = "Select file",filetypes = ((video.title,"*.mp3"),("all files","*.*")))
     label4 = tk.Label(root, text='Utwór ' + video.title + ' został pobrany!')
     label4.config(font=('helvetica', 10))
     canvas1.create_window(250, 250, window=label4)
@@ -37,12 +43,10 @@ def download_video():
     label4.config(font=('helvetica', 10))
     canvas1.create_window(250, 250, window=label4)
 
-
-
-button1 = tk.Button(text='Download Audio', command=download_audio, bg='red', fg='white', font=('helvetica', 12, 'bold'))
+button1 = tk.Button(text='Download Audio', command=download_audio, bg='black', fg='black', font=('helvetica', 12, 'bold'))
 canvas1.create_window(170, 190, width=150, window=button1)
 
-button2 = tk.Button(text='Download Video', command=download_video, bg='blue', fg='white', font=('helvetica', 12, 'bold'))
+button2 = tk.Button(text='Download Video', command=download_video, bg='black', fg='black', font=('helvetica', 12, 'bold'))
 canvas1.create_window(330, 190, width=150, window=button2)
 
 
